@@ -1,0 +1,5 @@
+report_date,campaign_id,campaign_name,adset_id,adset_name,creative_id,creative_name,country,impressions,clicks,spend,conversions,revenue
+2025-01-01,FB-C1,January Offers KSA,FB-A1,Broad Audience,FB-CR1,Static Image 1,KSA,62000,2600,410.0,65,1080
+2025-01-01,FB-C1,January Offers KSA,FB-A2,Retargeting 30d,FB-CR2,Static Image 2,KSA,30000,1700,290.0,90,1580
+2025-01-02,FB-C1,January Offers KSA,FB-A1,Broad Audience,FB-CR1,Static Image 1,KSA,64000,2800,450.0,70,1160
+2025-01-02,FB-C2,Kuwait Flash Sale,FB-A3,Women Interests,FB-CR3,Carousel 1,KW,45000,2100,260.0,45,690

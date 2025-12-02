@@ -1,0 +1,6 @@
+report_date,campaign_id,campaign_name,adset_id,adset_name,creative_id,creative_name,country,impressions,clicks,spend,conversions,revenue
+2025-01-01,TT-C1,Winter Sale KSA,TT-A1,MEN 25-45,TT-CR1,Video Hook 1,KSA,45000,2200,310.5,70,1190
+2025-01-01,TT-C1,Winter Sale KSA,TT-A1,MEN 25-45,TT-CR2,Video Hook 2,KSA,38000,1900,280.0,62,1010
+2025-01-01,TT-C2,Clearance Kuwait,TT-A2,WOMEN 18-34,TT-CR3,Beauty UGC 1,KW,52000,2450,330.0,55,770
+2025-01-02,TT-C1,Winter Sale KSA,TT-A1,MEN 25-45,TT-CR1,Video Hook 1,KSA,47000,2400,325.0,74,1250
+2025-01-02,TT-C2,Clearance Kuwait,TT-A2,WOMEN 18-34,TT-CR3,Beauty UGC 1,KW,53000,2500,340.0,52,730
