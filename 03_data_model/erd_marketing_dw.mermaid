@@ -1,0 +1,116 @@
+erDiagram
+
+    stage_tiktok_ads {
+        TEXT report_date
+        TEXT campaign_id
+        TEXT campaign_name
+        TEXT adset_id
+        TEXT adset_name
+        TEXT creative_id
+        TEXT creative_name
+        TEXT country
+        INTEGER impressions
+        INTEGER clicks
+        REAL spend
+        INTEGER conversions
+        REAL revenue
+    }
+
+    stage_meta_ads {
+        TEXT report_date
+        TEXT campaign_id
+        TEXT campaign_name
+        TEXT adset_id
+        TEXT adset_name
+        TEXT creative_id
+        TEXT creative_name
+        TEXT country
+        INTEGER impressions
+        INTEGER clicks
+        REAL spend
+        INTEGER conversions
+        REAL revenue
+    }
+
+    stage_orders {
+        TEXT order_id
+        TEXT order_date
+        TEXT customer_id
+        TEXT country
+        TEXT campaign_id
+        TEXT adset_id
+        TEXT creative_id
+        REAL amount
+        INTEGER is_new_customer
+    }
+
+    dim_platform {
+        INTEGER platform_key PK
+        TEXT platform_name
+    }
+
+    dim_country {
+        INTEGER country_key PK
+        TEXT country_code
+        TEXT country_name
+    }
+
+    dim_campaign {
+        INTEGER campaign_key PK
+        INTEGER platform_key FK
+        TEXT campaign_id_src
+        TEXT campaign_name
+    }
+
+    dim_adset {
+        INTEGER adset_key PK
+        INTEGER campaign_key FK
+        TEXT adset_id_src
+        TEXT adset_name
+    }
+
+    dim_creative {
+        INTEGER creative_key PK
+        INTEGER adset_key FK
+        TEXT creative_id_src
+        TEXT creative_name
+    }
+
+    fact_marketing_performance {
+        INTEGER fact_id PK
+        INTEGER date_key
+        INTEGER platform_key FK
+        INTEGER campaign_key FK
+        INTEGER adset_key FK
+        INTEGER creative_key FK
+        INTEGER country_key FK
+        INTEGER impressions
+        INTEGER clicks
+        REAL spend
+        INTEGER conversions
+        REAL revenue
+        INTEGER new_customers
+    }
+
+    %% Relationships
+
+    stage_tiktok_ads ||--o{ dim_campaign : "source for"
+    stage_meta_ads   ||--o{ dim_campaign : "source for"
+
+    stage_tiktok_ads ||--o{ dim_adset : "source for"
+    stage_meta_ads   ||--o{ dim_adset : "source for"
+
+    stage_tiktok_ads ||--o{ dim_creative : "source for"
+    stage_meta_ads   ||--o{ dim_creative : "source for"
+
+    stage_orders     ||--o{ fact_marketing_performance : "feeds new_customers"
+
+    dim_platform ||--o{ dim_campaign : "has many campaigns"
+    dim_campaign ||--o{ dim_adset : "has many adsets"
+    dim_adset    ||--o{ dim_creative : "has many creatives"
+
+    dim_platform ||--o{ fact_marketing_performance : "filters"
+    dim_country  ||--o{ fact_marketing_performance : "filters"
+    dim_campaign ||--o{ fact_marketing_performance : "filters"
+    dim_adset    ||--o{ fact_marketing_performance : "filters"
+    dim_creative ||--o{ fact_marketing_performance : "filters"
